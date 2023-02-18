@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+API routes:
 
-Things you may want to cover:
+login: POST http://localhost:3000/users/tokens/sign_in
 
-* Ruby version
+нужен password и email
 
-* System dependencies
+register: POST http://localhost:3000/users/tokens/sign_up
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+нужен password и email
