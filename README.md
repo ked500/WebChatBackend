@@ -8,8 +8,8 @@ login: POST http://localhost:3000/login
           {
           "user":
                {
-               "username": "ked1",
-               "password": "123456"
+                 "username": "ked1",
+                 "password": "123456"
                }
           }               
 
@@ -20,16 +20,16 @@ register: POST http://localhost:3000/register
          {
           "user":
               {
-              "username": "ked1",
-              "password": "123456",     
-              "password_confirmation": "12345"
+                "username": "ked1",
+                "password": "123456",     
+                "password_confirmation": "12345"
               }
          }    
 
 logout: DELETE http://localhost:3000/logout
 формат данных:
          {
-          "user_id": "2"
+           "user_id": "2"
          }
 user_logged_in? : GET http://localhost:3000/logged_in
 формат данных:
