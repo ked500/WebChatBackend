@@ -27,8 +27,5 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
-
 gem "rack-cors"
-
-gem "devise", "~> 4.9"
-gem "devise-api", "~> 0.1.1"
+gem "bcrypt"

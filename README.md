@@ -2,14 +2,29 @@
 
 API routes:
 
-login: POST http://localhost:3000/users/tokens/sign_in
+login: POST http://localhost:3000/login
 
-нужен password и email
+формат данных:
+          {
+          "user":
+               {
+               "username": "ked1",
+               "password": "123456"
+               }
+          }               
 
-register: POST http://localhost:3000/users/tokens/sign_up
 
-нужен password и email
+register: POST http://localhost:3000/register
 
-refresh token: POST http://localhost:3000/users/tokens/refresh
+формат данных:
+         {
+          "user":
+              {
+              "username": "ked1",
+              "password": "123456",     
+              "password_confirmation": "12345"
+              }
+         }    
 
-header Authorization {Bearer refresh_token}
+logout: DELETE http://localhost:3000/logout
+

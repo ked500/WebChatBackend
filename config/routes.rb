@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-  get 'pages/home'
-  get 'pages/restricted'
-  devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  post :login, to: "sessions#create"
+  post :register, to: "registrations#create"
+  delete :logout, to: "sessions#destroy"
+  get :logged_in, to: "sessions#logged_in"
 end

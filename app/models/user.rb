@@ -1,4 +1,8 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :api
+  has_secure_password
+
+  validates_presence_of :username
+  validates_presence_of :password
+  validates_presence_of :password_confirmation
+  validates_uniqueness_of :username
 end
