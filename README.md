@@ -27,4 +27,12 @@ register: POST http://localhost:3000/register
          }    
 
 logout: DELETE http://localhost:3000/logout
-
+формат данных:
+         {
+          "user_id": "2"
+         }
+user_logged_in? : GET http://localhost:3000/logged_in
+формат данных:
+        {
+          "user_id": "2"
+        }

@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
                .try(:authenticate, params[:user][:password])
 
     if user
-      session[:user_id] = user.id
+    user_id = user.id
+    session[user_id] = user.id
       render json: {
         status: :created,
         user: {
@@ -19,7 +20,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    reset_session
+    session.delete(params[:user_id])
     head(:ok)
   end
 
