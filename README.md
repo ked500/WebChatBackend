@@ -46,3 +46,20 @@ create message: POST http://localhost:3000/create_message
          "user_id": "1",
          "content": "text"
        }
+
+destroy message: DELETE http://localhost:3000/destroy_message
+
+формат данных:
+       {
+         "user_id": "1",
+         "message_id": "1"
+       }       
+
+edit message: PATCH http://localhost:3000/edit_message
+
+формат данных:
+       {
+         "user_id": "2",
+         "message_id": "2",
+         "content": "text1"
+       }
