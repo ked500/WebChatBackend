@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   include CurrentUserConcern
+  skip_before_action :set_current_user, only: [:create]
   def create
     user = User.find_by(username: params[:user][:username])
                .try(:authenticate, params[:user][:password])
@@ -9,11 +10,7 @@ class SessionsController < ApplicationController
     session[user_id] = user.id
       render json: {
         status: :created,
-        user: {
-          id: user.id,
-          username: user.username,
-        }
-      }
+        user: { id: user.id, username: user.username, } }
     else
       head(:unauthorized)
     end
@@ -27,15 +24,9 @@ class SessionsController < ApplicationController
   def logged_in
     if @current_user
       render json: {
-        user: {
-          id: @current_user.id,
-          username: @current_user.username,
-        }
-      }
+        user: { id: @current_user.id, username: @current_user.username } }
     else
-      render json: {
-        logged_in: false
-      }
+      render json: { logged_in: false }
     end
   end
 end
