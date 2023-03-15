@@ -1,24 +1,38 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+API routes:
 
-Things you may want to cover:
+login: POST http://localhost:3000/login
 
-* Ruby version
+формат данных:
+          {
+          "user":
+               {
+                 "username": "ked1",
+                 "password": "123456"
+               }
+          }               
 
-* System dependencies
 
-* Configuration
+register: POST http://localhost:3000/register
 
-* Database creation
+формат данных:
+         {
+          "user":
+              {
+                "username": "ked1",
+                "password": "123456",     
+                "password_confirmation": "12345"
+              }
+         }    
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+logout: DELETE http://localhost:3000/logout
+формат данных:
+         {
+           "user_id": "2"
+         }
+user_logged_in? : GET http://localhost:3000/logged_in
+формат данных:
+        {
+          "user_id": "2"
+        }
