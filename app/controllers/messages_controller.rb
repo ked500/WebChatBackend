@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   include CurrentUserConcern
   before_action :correct_user, only: [:destroy, :update]
   before_action :set_message, only: [:update]
+  skip_before_action :set_current_user, only: [:index]
 
   def create
     @message = @current_user.messages.build(message_params)
@@ -26,6 +27,11 @@ class MessagesController < ApplicationController
     else
       head :unprocessable_entity
     end
+  end
+
+  def index
+    @messages = Message.all
+    render json: @messages
   end
 
   private
