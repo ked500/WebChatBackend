@@ -2,28 +2,27 @@ class MessagesController < ApplicationController
   include CurrentUserConcern
   before_action :correct_user, only: [:destroy, :update]
   before_action :set_message, only: [:update]
-  before_action :set_websocket, only: [:create, :update, :destroy]
 
   def create
     @message = @current_user.messages.build(message_params)
     if @message.save
-      @websocket.broadcast_to('chat_channel',{message: @message, action: 'create'})
-      head :ok
+      render json: {
+        status: :created,
+        message: { content: @message.content, }
+      }
     else
-      head :unprocessable_entity
+      render json: { status: :unprocessable_entity }
     end
   end
 
   def destroy
     @message.destroy
-    @websocket.broadcast_to('chat_channel',{message_id: params[:message_id], action: 'destroy'})
     head :ok
   end
 
   def update
     if @message.update(message_params)
-      @websocket.broadcast_to('chat_channel',{message: @message, action: 'update'})
-      head :ok
+      render json: {message: { content: @message.content } }
     else
       head :unprocessable_entity
     end
