@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   post :create_message, to: "messages#create"
   delete :destroy_message, to: "messages#destroy"
   patch :update_message, to: "messages#update"
+  mount ActionCable.server => "/cable"
 end

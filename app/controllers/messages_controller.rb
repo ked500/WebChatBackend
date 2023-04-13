@@ -43,8 +43,4 @@ class MessagesController < ApplicationController
   def set_message
     @message = Message.find(params[:message_id])
   end
-
-  def set_websocket
-    @websocket = ActionCable.server
-  end
 end
