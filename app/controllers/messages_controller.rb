@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
     if @message.save
       render json: {
         status: :created,
-        message: { content: @message.content, }
+        message: @message
       }
     else
       render json: { status: :unprocessable_entity }
@@ -30,14 +30,14 @@ class MessagesController < ApplicationController
   end
 
   def index
-    @messages = Message.all
+    @messages = Message.all.order(:created_at => :asc)
     render json: @messages
   end
 
   private
 
   def message_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:content, :user_name)
   end
 
   def correct_user
