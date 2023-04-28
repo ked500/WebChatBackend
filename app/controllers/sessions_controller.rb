@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   include CurrentUserConcern
   skip_before_action :set_current_user, only: [:create]
+
   def create
     user = User.find_by(username: params[:user][:username])
                .try(:authenticate, params[:user][:password])
