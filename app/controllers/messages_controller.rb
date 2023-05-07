@@ -1,7 +1,6 @@
 class MessagesController < ApplicationController
   include CurrentUserConcern
-  before_action :correct_user, only: [:destroy, :update]
-  before_action :set_message, only: [:update]
+  before_action :set_message, only: [:update,:destroy]
   skip_before_action :set_current_user, only: [:index]
 
   def create
@@ -40,12 +39,8 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:content, :user_name)
   end
 
-  def correct_user
-    @message = @current_user.messages.find_by(id: params[:message_id])
-    head(:unprocessable_entity) if @message.nil?
-  end
-
   def set_message
-    @message = Message.find(params[:message_id])
+    @message = @current_user.messages.find_by(id: params[:id])
+    head(:unprocessable_entity) if @message.nil?
   end
 end

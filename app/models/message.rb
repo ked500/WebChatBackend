@@ -1,5 +1,6 @@
 class Message < ApplicationRecord
   belongs_to :user
+  validates_presence_of :content
   after_create_commit {broadcast_message}
 
   private

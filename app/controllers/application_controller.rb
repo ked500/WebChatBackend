@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
   include ::ActionController::Cookies
 
-  def users_online
+  def connected_users
     render json: ActionCable.server.connections.length
   end
 end
