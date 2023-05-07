@@ -13,7 +13,6 @@ login: POST http://localhost:3000/login
                }
           }               
 
-
 register: POST http://localhost:3000/register
 
 формат данных:
@@ -32,14 +31,8 @@ logout: DELETE http://localhost:3000/logout
          {
            "user_id": "2"
          }
-user_logged_in? : GET http://localhost:3000/logged_in
 
-формат данных:
-        {
-          "user_id": "2"
-        }
-
-create message: POST http://localhost:3000/create_message
+create message: POST http://localhost:3000/messages
 
 формат данных:
        {
@@ -47,19 +40,17 @@ create message: POST http://localhost:3000/create_message
          "content": "text"
        }
 
-destroy message: DELETE http://localhost:3000/destroy_message
+destroy message: DELETE http://localhost:3000/messages/id
 
 формат данных:
        {
          "user_id": "1",
-         "message_id": "1"
        }       
 
-edit message: PATCH http://localhost:3000/edit_message
+edit message: PATCH http://localhost:3000/messages/id
 
 формат данных:
        {
          "user_id": "2",
-         "message_id": "2",
          "content": "text1"
        }
