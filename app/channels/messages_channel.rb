@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class MessagesChannel < ApplicationCable::Channel
+  include MessageBroadcastConcern
   def subscribed
     stream_from "MessagesChannel" # Подключаемся к каналу MessagesChannel и начинаем прослушивать сообщения.
+    broadcast_messages(:connection)
   end
 
   def unsubscribed
